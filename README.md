@@ -8,7 +8,9 @@ Sound Detection: A sound sensor continuously monitors the environment for any un
 Signal Processing: When noise levels exceed a predefined threshold, the sensor sends a signal to the Arduino board.
 Alarm Activation: The Arduino processes the signal and triggers a connected buzzer or speaker to emit a loud alarm sound.
 Alert Mechanism: The alarm serves as a deterrent and notifies users of possible security threats.
-🛠️ Components Used
+
+Components Used
+
 Arduino Board (e.g., Arduino Uno) – Acts as the brain of the system
 Sound Sensor Module (e.g., KY-038 or LM393) – Detects sound changes
 Buzzer or Speaker – Produces an alarm sound when triggered
