@@ -1,0 +1,55 @@
+//Pin definitions 
+const int soundSensorPin= A0;
+const int buzzerPin = 3;
+const int ledPin= 4;
+const int buttonPin= 5;
+
+//Threshold for detecing sound 
+const int soundThreshold = 600;
+
+bool alarmActive= false;
+
+void setup(){
+  pinMode(buzzerPin, OUTPUT);
+  pinMode(ledPin, OUTPUT);
+  pinMode(buttonPin, INPUT);
+
+  digitalWrite(buzzerPin,LOW);
+  digitalWrite(ledPin,LOW);
+
+  Serial.begin(9600);
+}
+
+void loop(){
+  int soundLevel =analogRead(soundSensorPin);
+  int buttonState =digitalRead(buttonPin);
+
+  Serial.print("Sound Level:");
+  Serial.println(soundLevel);
+
+
+if (soundLevel > soundThreshold &&! alarmActive){
+  activateAlarm();
+}
+
+if (buttonState== HIGH && alarmActive){
+  deactivateAlarm();
+}
+
+delay(100);
+
+}
+
+void activateAlarm(){
+  alarmActive = true;
+  digitalWrite(ledPin, LOW);
+  digitalWrite(buzzerPin, HIGH);
+  Serial.println("Alarm Activated!");
+}
+
+void deactivateAlarm(){
+  alarmActive = false;
+  digitalWrite(ledPin,LOW);
+  digitalWrite(buzzerPin, LOW);
+  Serial.println("Alarm Deactivated!");
+}
